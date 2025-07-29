@@ -5,8 +5,6 @@ import Link from "next/link"
 import { MessageCircle, Phone, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { motion } from "framer-motion"
-import { useState } from "react"
 
 const productCategories = {
   "Lighting & Electrical": [
@@ -101,34 +99,26 @@ function WhatsAppButton({ text, productName }: { text: string; productName: stri
 }
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   return (
-    <motion.div
-      className="min-h-screen bg-gray-900 text-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
-      <motion.nav
-        className="bg-black/90 backdrop-blur-sm sticky top-0 z-50 border-b border-red-600/20 shadow-md"
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <img
-                src="/bike1111.png"
-                alt="Tayyab Autos Logo"
-                className="h-10 w-auto rounded-sm shadow-sm"
-              />
-              <span className="text-lg text-white font-semibold tracking-wide hidden sm:block">
-                Tayyab Autos
-              </span>
-            </div>
+               <nav className="bg-black/90 backdrop-blur-sm sticky top-0 z-50 border-b border-red-600/20 shadow-md">
+  <div className="container mx-auto px-4">
+    <div className="flex items-center justify-between h-16">
+      {/* Logo */}
+      <div className="flex items-center space-x-3">
+        <img
+          src="/bike1111.png" // or use import logo from '../assets/logo.png'
+          alt="Tayyab Autos Logo"
+          className="h-10 w-auto rounded-sm shadow-sm"
+        />
+        <span className="text-lg text-white font-semibold tracking-wide hidden sm:block">
+          Tayyab Autos
+        </span>
+      </div>
+
+  
+
             <div className="hidden md:flex space-x-8">
               <Link href="#home" className="text-gray-300 hover:text-red-500 transition-colors">
                 Home
@@ -140,76 +130,24 @@ export default function HomePage() {
                 Contact
               </Link>
             </div>
-            {/* Mobile Hamburger */}
+
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-white"
-                aria-label="Open menu"
-                onClick={() => setMobileMenuOpen((open) => !open)}
-              >
+              <Button variant="ghost" size="sm" className="text-white">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </Button>
-              {/* Mobile Menu Overlay */}
-              {mobileMenuOpen && (
-                <div className="fixed inset-0 z-50 bg-black/80 flex flex-col items-center justify-center space-y-8 animate-fade-in">
-                  <button
-                    className="absolute top-6 right-6 text-white text-3xl"
-                    aria-label="Close menu"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    &times;
-                  </button>
-                  <Link
-                    href="#home"
-                    className="text-2xl text-white hover:text-red-500 transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="#products"
-                    className="text-2xl text-white hover:text-red-500 transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Products
-                  </Link>
-                  <Link
-                    href="#contact"
-                    className="text-2xl text-white hover:text-red-500 transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Contact
-                  </Link>
-                </div>
-              )}
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Hero Section */}
-      <motion.section
-        id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-      >
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        {/*<div className="absolute inset-0 bg-[url('/bike1111.png?height=500&width=500')] bg-cover bg-center opacity-30"></div>*/}
+       {/* <div className="absolute inset-0 bg-[url('/bike1111.png?height=500&width=500')] bg-cover bg-center opacity-30"></div>*/}
 
-        <motion.div
-          className="relative z-10 text-center px-4 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent">
             TAYYAB AUTOS
           </h1>
@@ -237,22 +175,15 @@ export default function HomePage() {
               </a>
             </Button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-20 h-20 border-2 border-red-600/30 rounded-full animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-16 h-16 border-2 border-red-600/30 rounded-full animate-pulse delay-1000"></div>
-      </motion.section>
+      </section>
 
       {/* Products Section */}
-      <motion.section
-        id="products"
-        className="py-20 px-4"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-      >
+      <section id="products" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
@@ -264,14 +195,7 @@ export default function HomePage() {
           </div>
 
           {Object.entries(productCategories).map(([categoryName, products], categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              className="mb-16"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 * categoryIndex }}
-            >
+            <div key={categoryIndex} className="mb-16">
               {/* Category Header */}
               <div className="flex items-center mb-8">
                 <div className="flex-1 h-px bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
@@ -295,81 +219,54 @@ export default function HomePage() {
               </div>
 
               {/* Products Grid */}
-              <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.12
-                    }
-                  }
-                }}
-              >
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.map((product, productIndex) => (
-                  <motion.div
+                  <Card
                     key={productIndex}
-                    variants={{
-                      hidden: { opacity: 0, y: 40, scale: 0.95 },
-                      visible: { opacity: 1, y: 0, scale: 1 }
-                    }}
-                    transition={{ duration: 0.5, delay: 0.1 * productIndex }}
+                    className="bg-gray-800 border-gray-700 hover:border-red-600/50 transition-all duration-300 group hover:shadow-lg hover:shadow-red-600/20 cursor-pointer"
+                    onClick={() => window.location.href = `/products/${encodeURIComponent(product.name)}`}
                   >
-                    <Card
-                      className="bg-gray-800 border-gray-700 hover:border-red-600/50 transition-all duration-300 group hover:shadow-lg hover:shadow-red-600/20 cursor-pointer"
-                      onClick={() => window.location.href = `/products/${encodeURIComponent(product.name)}`}
-                    >
-                      <CardContent className="p-6">
-                        <div className="relative mb-4 overflow-hidden rounded-lg flex items-center justify-center bg-white" style={{height: '180px'}}>
-                          <Image
-                            src={product.image || "/placeholder.svg"}
-                            alt={product.name}
-                            width={160}
-                            height={160}
-                            className="object-contain mx-auto"
-                          />
-                          <div className="absolute top-2 left-2 bg-red-600/90 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                            {categoryName.split(" ")[0]}
-                          </div>
+                    <CardContent className="p-6">
+                      <div className="relative mb-4 overflow-hidden rounded-lg flex items-center justify-center bg-white" style={{height: '180px'}}>
+                        <Image
+                          src={product.image || "/placeholder.svg"}
+                          alt={product.name}
+                          width={160}
+                          height={160}
+                          className="object-contain mx-auto"
+                        />
+                        <div className="absolute top-2 left-2 bg-red-600/90 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                          {categoryName.split(" ")[0]}
                         </div>
+                      </div>
 
-                        <h4 className="text-lg font-semibold mb-4 text-center text-gray-100 group-hover:text-red-400 transition-colors">
-                          {product.name}
-                        </h4>
+                      <h4 className="text-lg font-semibold mb-4 text-center text-gray-100 group-hover:text-red-400 transition-colors">
+                        {product.name}
+                      </h4>
 
-                        <div className="space-y-2">
-                          <WhatsAppButton text={product.whatsappText} productName={product.name} />
-                          
-                          <Button
-                            asChild
-                            variant="outline"
-                            size="sm"
-                            className="w-full border-red-600 text-red-500 bg-transparent hover:bg-red-600 hover:text-white transition-all duration-300 font-semibold"
-                          >
-                            <Link href={`/products/${encodeURIComponent(product.name)}`}>
-                              More Items
-                            </Link>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                      <div className="space-y-2">
+                        <WhatsAppButton text={product.whatsappText} productName={product.name} />
+                        
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="w-full border-red-600 text-red-500 bg-transparent hover:bg-red-600 hover:text-white transition-all duration-300 font-semibold"
+                        >
+                          <Link href={`/products/${encodeURIComponent(product.name)}`}>
+                            More Items
+                          </Link>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           ))}
 
           {/* Call to Action */}
-          <motion.div
-            className="text-center mt-16 p-8 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl border border-red-600/20"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
+          <div className="text-center mt-16 p-8 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl border border-red-600/20">
             <h3 className="text-2xl font-bold mb-4 text-red-500">Can't Find What You're Looking For?</h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               We specialize in custom bike decoration parts. Contact us for personalized solutions for your Honda CG 125
@@ -389,19 +286,12 @@ export default function HomePage() {
                 Request Custom Parts
               </a>
             </Button>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Contact Section */}
-      <motion.section
-        id="contact"
-        className="py-20 px-4 bg-black/50"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-      >
+      <section id="contact" className="py-20 px-4 bg-black/50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
@@ -488,16 +378,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Footer */}
-      <motion.footer
-        className="bg-black py-12 px-4 border-t border-gray-800"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.1 }}
-      >
+      <footer className="bg-black py-12 px-4 border-t border-gray-800">
         <div className="container mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center space-x-2 mb-4">
@@ -587,7 +471,7 @@ export default function HomePage() {
             <p className="text-gray-500 text-sm">© 2024 Tayyab Autos Decoration. All rights reserved.</p>
           </div>
         </div>
-      </motion.footer>
-    </motion.div>
+      </footer>
+    </div>
   )
 }

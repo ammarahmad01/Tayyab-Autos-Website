@@ -145,7 +145,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-        {/*<div className="absolute inset-0 bg-[url('/1.png?height=1080&width=1920')] bg-cover bg-center opacity-30"></div>*/}
+        {/*<div className="absolute inset-0 bg-[url('/bike1111.png?height=500&width=500')] bg-cover bg-center opacity-30"></div>*/}*/}
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent">

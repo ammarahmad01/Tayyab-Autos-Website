@@ -5,6 +5,7 @@ import Link from "next/link"
 import { MessageCircle, Phone, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { useState } from "react"
 
 const productCategories = {
   "Lighting & Electrical": [
@@ -99,26 +100,25 @@ function WhatsAppButton({ text, productName }: { text: string; productName: stri
 }
 
 export default function HomePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
-               <nav className="bg-black/90 backdrop-blur-sm sticky top-0 z-50 border-b border-red-600/20 shadow-md">
-  <div className="container mx-auto px-4">
-    <div className="flex items-center justify-between h-16">
-      {/* Logo */}
-      <div className="flex items-center space-x-3">
-        <img
-          src="/bike1111.png" // or use import logo from '../assets/logo.png'
-          alt="Tayyab Autos Logo"
-          className="h-10 w-auto rounded-sm shadow-sm"
-        />
-        <span className="text-lg text-white font-semibold tracking-wide hidden sm:block">
-          Tayyab Autos
-        </span>
-      </div>
-
-  
-
+      <nav className="bg-black/90 backdrop-blur-sm sticky top-0 z-50 border-b border-red-600/20 shadow-md">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <img
+                src="/bike1111.png"
+                alt="Tayyab Autos Logo"
+                className="h-10 w-auto rounded-sm shadow-sm"
+              />
+              <span className="text-lg text-white font-semibold tracking-wide hidden sm:block">
+                Tayyab Autos
+              </span>
+            </div>
             <div className="hidden md:flex space-x-8">
               <Link href="#home" className="text-gray-300 hover:text-red-500 transition-colors">
                 Home
@@ -130,13 +130,52 @@ export default function HomePage() {
                 Contact
               </Link>
             </div>
-
+            {/* Mobile Hamburger */}
             <div className="md:hidden">
-              <Button variant="ghost" size="sm" className="text-white">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-white"
+                aria-label="Open menu"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </Button>
+              {/* Mobile Menu Overlay */}
+              {mobileMenuOpen && (
+                <div className="fixed inset-0 z-50 bg-black/80 flex flex-col items-center justify-center space-y-8">
+                  <button
+                    className="absolute top-6 right-6 text-white text-3xl"
+                    aria-label="Close menu"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    &times;
+                  </button>
+                  <Link
+                    href="#home"
+                    className="text-2xl text-white hover:text-red-500 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="#products"
+                    className="text-2xl text-white hover:text-red-500 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Products
+                  </Link>
+                  <Link
+                    href="#contact"
+                    className="text-2xl text-white hover:text-red-500 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -145,7 +184,6 @@ export default function HomePage() {
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
-       {/* <div className="absolute inset-0 bg-[url('/bike1111.png?height=500&width=500')] bg-cover bg-center opacity-30"></div>*/}
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent">
